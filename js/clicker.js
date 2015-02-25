@@ -13,6 +13,7 @@ createItem = function(catName) {
 	var link = document.createElement("a");
 	link.id = 'link' + catName;
 	link.innerHTML = catName;
+	link.href = '';
 	item.appendChild(link);
 
 	link.addEventListener('click', handleMenuClick, false);
@@ -75,7 +76,6 @@ Cat.prototype.createCatDOM = function() {
 	article.appendChild(messageWrapper);
 
 	document.getElementsByTagName("main")[0].appendChild(article);
-	// this.catClickListener();
 }
 
 Cat.prototype.getTitle = function() {
