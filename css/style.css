@@ -7,7 +7,7 @@ body{
 	height: 100%;
 }
 
-header, main, footer {
+header, main, footer{
 	display: flex;
 	flex-wrap: wrap;
 }
@@ -15,15 +15,56 @@ header, main, footer {
 body, main { 
 	flex-direction: column;
 	font-family: 'Lato', sans-serif;
+	color: #151515;
 }
+
+/*Cat chooser*/
+menu {
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	/*box-shadow: 0 5px 15px -5px #333;*/
+}
+menu h3 {
+	margin-bottom: 0;
+	text-align: center;
+}
+.catsList {
+	display: flex;
+	flex-flow: row wrap;
+	justify-content: space-between;
+	padding: 0;
+	margin: 0;
+	width:100%;
+}
+.catItem {
+	display: block;
+	text-align: center; 
+	flex-grow: 1;
+	/*padding: 1em 0;*/
+}
+.catItem:nth-child(odd) a{
+	background-color: rgba(215, 52, 52, 0.5);
+	color: #fff;
+}
+.catItem:nth-child(even) a{
+	background-color: rgba(215, 52, 52, 0.25);
+	color: #D73434;
+}
+.catItem a {
+	font-size: 1em;
+}
+
+ul li { padding: 0; margin: 0; }
+ul a { padding: 1em; display: block; }
 
 /*Header*/
 header {
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	margin-bottom: 1.5em;
 	border-bottom-style: dashed;
+	/*box-shadow: 0 5px 15px -5px #333;*/
 }
 
 .logo {
@@ -32,6 +73,7 @@ header {
 }
 .title {
 	padding: 10px;
+	color: #D73434;
 }
 
 
@@ -71,7 +113,7 @@ header {
 }
 
 
-@media screen and (min-width: 810px) { 
+@media screen and (min-width: 845px) { 
 	.title {
 		margin-right: 1%;
 	}
@@ -89,6 +131,10 @@ header {
 main {
 	justify-content: center;
 }
+.name {
+	color: #D73434;
+}
+
 .cat {
 	display: flex;
 	flex-wrap: wrap;
@@ -98,7 +144,6 @@ main {
 .catImg {
 	width: 100%;
 	max-width: 510px;
-	/*align-self: center;*/
 }
 
 .message {
@@ -109,6 +154,8 @@ main {
 }
 
 .counter {
+	font-weight: 300;
+	color: #D73434;
 }
 
 /*footer*/
@@ -121,4 +168,5 @@ footer {
 	font-weight: 400;
 	font-family: sans-serif;
 	border-top-style: dashed;
+	/*box-shadow: 0 -5px 15px -5px #333;*/
 }

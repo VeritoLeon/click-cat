@@ -1,8 +1,53 @@
+
+var kittens = [];
+
+createMenu = function() {
+	for (var i = 0, length = kittens.length; i < length; i++) {
+		createItem(kittens[i].name);
+	}
+}
+
+createItem = function(catName) {
+	var item = document.createElement("li");
+	item.className = 'catItem';
+	var link = document.createElement("a");
+	link.id = 'link' + catName;
+	link.innerHTML = catName;
+	item.appendChild(link);
+
+	link.addEventListener('click', handleMenuClick, false);
+
+	var ul = document.getElementsByClassName('catsList')[0];
+	ul.appendChild(item);
+}
+
+getCat = function(catName) {
+	for (var i = 0, length = kittens.length; i < length; i++)
+		if(kittens[i].name === catName)
+			return kittens[i];
+}
+
+handleMenuClick = function(e) {
+	document.getElementsByTagName("main")[0].innerHTML = '';
+	var newCat = getCat(this.innerHTML);
+	newCat.createCatDOM();
+}
+
+window.onload = function() {
+	kittens.push(new Cat('Sassy', 'img/sassy.jpg', 'Sassy, a white and strawberry fat tabby cat'));
+	kittens.push(new Cat('Mattie', 'img/mattie.jpg', 'Mattie, a white and orange fat tabby cat'));
+	kittens.push(new Cat('Felix', 'img/sassy.jpg', 'Sassy, a white and strawberry fat tabby cat'));
+	kittens.push(new Cat('Silvestre', 'img/mattie.jpg', 'Mattie, a white and orange fat tabby cat'));
+	kittens.push(new Cat('Tom', 'img/sassy.jpg', 'Sassy, a white and strawberry fat tabby cat'));
+	createMenu();
+	kittens[0].createCatDOM();
+}
+
+
 var Cat = function(name, src, alt) {
 	this.name = name;
 	this.img = this.getImage(src, alt);
 	this.numClicks = 0;
-	this.createCatDOM();
 	this.catClickListener();
 }
 
@@ -13,13 +58,6 @@ Cat.prototype.catClickListener = function() {
 		var counter = document.getElementById('pettings' + cat.name);
 		counter.innerHTML = cat.numClicks;
 	}, false);
-}
-
-addClick = function(cat) {
-	console.log(cat);
-	cat.numClicks++;
-	var counter = document.getElementById('pettings' + cat.name);
-	counter.innerHTML = cat.numClicks;
 }
 
 Cat.prototype.createCatDOM = function() {
@@ -37,6 +75,7 @@ Cat.prototype.createCatDOM = function() {
 	article.appendChild(messageWrapper);
 
 	document.getElementsByTagName("main")[0].appendChild(article);
+	// this.catClickListener();
 }
 
 Cat.prototype.getTitle = function() {
@@ -64,7 +103,7 @@ Cat.prototype.getMessage = function() {
 	span.className = 'counter';
 	span.innerHTML = this.numClicks;
 
-	var message1 = document.createTextNode('You\'ve pet ' + this.name + ' ');
+	var message1 = document.createTextNode('You\'ve petted ' + this.name + ' ');
 	var message2 = document.createTextNode(' times!');
 	p.appendChild(message1);
 	p.appendChild(span);
@@ -72,6 +111,3 @@ Cat.prototype.getMessage = function() {
 
 	return p;
 }
-
-var mattie = new Cat('Mattie', 'img/mattie.jpg', 'Mattie, a white and orange fat tabby cat');
-var sassy = new Cat('Sassy', 'img/sassy.jpg', 'Sassy, a white and strawberry fat tabby cat');
