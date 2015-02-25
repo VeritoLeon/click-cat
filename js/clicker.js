@@ -13,7 +13,6 @@ createItem = function(catName) {
 	var link = document.createElement("a");
 	link.id = 'link' + catName;
 	link.innerHTML = catName;
-	link.href = '';
 	item.appendChild(link);
 
 	link.addEventListener('click', handleMenuClick, false);
