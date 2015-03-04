@@ -17,7 +17,7 @@ createItem = function(catName) {
 
 	link.addEventListener('click', handleMenuClick, false);
 
-	var ul = document.getElementsByClassName('catsList')[0];
+	var ul = document.getElementById('catsList');
 	ul.appendChild(item);
 }
 

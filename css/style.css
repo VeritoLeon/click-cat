@@ -29,7 +29,7 @@ menu h3 {
 	margin-bottom: 0;
 	text-align: center;
 }
-.catsList {
+#catsList {
 	display: flex;
 	flex-flow: row wrap;
 	justify-content: space-between;
