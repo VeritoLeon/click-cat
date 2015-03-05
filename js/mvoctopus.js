@@ -45,6 +45,13 @@
         },
         clickCat: function(name) {
         	this.getCurrentCat().clicks++;
+        },
+        showAdminPanel: function() {
+        	adminView.init();
+        },
+        saveCat: function(cat) {
+        	detailsView.render();
+			listView.render();
         }
 	};
 	var listView = {
@@ -79,8 +86,10 @@
 			this.title = $( '.name' );
 			this.message = $( '.message' );
 			this.picture = $( '#catPic' );
+			this.adminBtn = $( '.admin' );
 			this.render();
 			this.handleClick();
+			this.handleAdmin();
 		},
 		render: function() {
 			var cat = octopus.getCurrentCat();
@@ -95,6 +104,11 @@
 				var cat = octopus.getCurrentCat();
             	octopus.clickCat();
             	$('#pettings' + cat.name).html(cat.clicks);
+			});
+		},
+		handleAdmin: function() {
+			this.adminBtn.click(function(e) {
+				octopus.showAdminPanel();
 			});
 		}
 	};

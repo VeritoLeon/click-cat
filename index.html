@@ -11,29 +11,43 @@
 	</head>
 	<body>
 		<header>
-			<img class="logo" src="img/logo.jpg" alt="" height="100px">
+			<img class="logo" src="img/logo.svg" alt="" height="100px">
 			<h1 class="title">Click-Cat</h1>
 		</header>
 		<menu>
 			<h3>Choose a cat</h3>
-			<ul id="catsList"></ul>
+			<ul data-bind="foreach: cats" id="catsList">
+				<li class="catItem"> <a data-bind="text: catName, click: $parent.setCurrentCat"></a></li>
+			</ul>
 		</menu>
 		<main role="main">
-			<article class="cat">
+			<article class="cat" data-bind="with: currentCat">
 				<div>
-					<h2 class="name"></h2>
-					<img class="catImg" id="catPic" src="" alt="">
+					<h2 class="name" data-bind="text: catName"></h2>
+					<h3>is <span data-bind="text: displayLevel">not amused<span></h3>
+					<img class="catImg" id="catPic" data-bind="click: clickCat, attr: { src: url, alt: desc }">
 				</div>
 				<div>
-					<p class="message"></p>
+					<p class="message">
+						You've petted <span data-bind="text: catName"></span> <span id="pettings" class="counter" data-bind="text: clicksNumber"></span> times!'
+					</p>
+					<!-- <button name="admin" class="admin">Admin</button> -->
 				</div>
 			</article>
+			<form id="adminPanel">
+				<!-- <input type="text" placeholder="name">
+				<input type="text" placeholder="image source">
+				<input type="number" placeholder="clicks number">
+				<input type="button" value="Save"> -->
+			</form>
 		</main>
 		<footer class="credits">
 			<span id="madeby">By Vero</span>
 			<span id="source">Check the repository @ <a class="repository" href="">Github</a></span>
 		</footer>
 		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-		<script src="js/mvoctopus.js"></script>
+		<script src="js/lib/knockout-3.3.0.js"></script>
+		<script src="js/app.js"></script>
+		<!-- <script src="js/pro.js"></script> -->
 	</body>
 </html>
